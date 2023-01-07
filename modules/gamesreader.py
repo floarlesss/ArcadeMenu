@@ -1,6 +1,9 @@
 import os
 
+working_dir = os.getcwd()
 
+def getNumberOfGames():
+    print(working_dir)
 
 
 
