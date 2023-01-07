@@ -24,3 +24,5 @@ def update(ind):
     window.after(30, update, ind)
 label = Label(window)
 label.place(relx=.5, rely=.5, anchor= CENTER)
+
+window.mainloop()
