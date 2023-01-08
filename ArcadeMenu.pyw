@@ -26,8 +26,16 @@ def startwithlogo(arg):
         #window.attributes("-fullscreen", True)
         window.title("ArcadeMenu")
 
-        logo_img = tk.PhotoImage(file="icons_and_logo/logo/logo_full/logo_fullscreen.png")
-        logo_imgLabel = tk.Label(window, image = logo_img)
+        width = window.winfo_screenwidth()
+        height = window.winfo_screenheight()
+
+        # open image to resize it
+        image = Image.open("icons_and_logo/logo/logo_full/logo_fullscreen.png")
+        # resize the image with width and height of root
+        resized = image.resize((width, height), Image.ANTIALIAS)
+
+        logo_img = ImageTK.PhotoImage(resized)
+        logo_imgLabel = tk.Label(window, anchor='nw', image = logo_img)
         logo_imgLabel.pack(fill=BOTH, expand=True)
         
 
