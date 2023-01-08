@@ -15,8 +15,10 @@ def printhelp():
     print('--startwithlogo\nYou can pass "true" or "false" into this. (case-insensitive)')
     exit()
 
+
 def startwithlogo(arg):
     if arg == True:
+        # Window config:
         window = tk.Tk()
         window.geometry('900x500')
         window.configure(bg='#1C1D1F', cursor="none")
@@ -24,13 +26,18 @@ def startwithlogo(arg):
         window.title("ArcadeMenu")
 
 
-        logo_image = PhotoImage(file="icons_and_logo/logo/logo_full/logo_fullscreen.png")
+        logo_image = tk.PhotoImage(file="icons_and_logo/logo/logo_full/logo_fullscreen.png")
         logo_imageLabel = tk.Label(window, image=logo_image)
         logo_imageLabel.pack()
         
 
 
         window.mainloop()
+
+
+
+
+
 
 # Count the arguments
 arguments = len(sys.argv) - 1
