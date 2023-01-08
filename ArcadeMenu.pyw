@@ -16,7 +16,8 @@ else:
     position = 1
     while (arguments >= position):
         if (sys.argv[position]).startswith("--"):
-            argument = (sys.argv[position][2:])
+            argumentraw = (sys.argv[position])
+            argument = argumentraw[2:]
 
         print((sys.argv[position]))
         position = position + 1
@@ -28,7 +29,7 @@ window.attributes("-fullscreen", True)
 window.title("ArcadeMenu")
 
 
-logo_image = PhotoImage(file="icons_and_logo/logo_full/logo_fullscreen.png")
+logo_image = PhotoImage(file="icons_and_logo/logo/logo_full/logo_fullscreen.png")
 
 
 window.mainloop()
