@@ -4,4 +4,4 @@
 
 ### Games launcher for a 2 player tabletop arcade cabinet.
 
-![ArcadeMenu's Logo](https://i.ibb.co/Yhpxj4V/logo.png "ArcadeMenu's Logo")
+<img src="https://i.ibb.co/Yhpxj4V/logo.png" alt="ArcadeMenu's Logo" style="height: 100px; width:100px;"/>
