@@ -11,4 +11,3 @@ echo Marking as executable and converting
 chmod +x ./ArcadeMenu.pyw
 
 dos2unix ./ArcadeMenu.pyw
-
