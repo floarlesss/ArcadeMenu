@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from PIL import ImageTK, Image
+from PIL import ImageTk, Image
 from threading import Thread
 import sys
 
@@ -34,7 +34,7 @@ def startwithlogo(arg):
         # resize the image with width and height of root
         resized = image.resize((width, height), Image.ANTIALIAS)
 
-        logo_img = ImageTK.PhotoImage(resized)
+        logo_img = ImageTk.PhotoImage(resized)
         logo_imgLabel = tk.Label(window, anchor='nw', image = logo_img)
         logo_imgLabel.pack(fill=BOTH, expand=True)
         
