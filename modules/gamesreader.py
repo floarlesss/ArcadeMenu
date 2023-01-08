@@ -2,9 +2,12 @@ import os
 
 working_dir = os.getcwd()
 
+# get number of games function variables:
+number_of_games = 0
+newgame = False
+
 def getNumberOfGames():
-    global number_of_games
-    number_of_games = 0
+    global number_of_games, newgame
 
     arcademenudir = working_dir[:-8]
     gameslistdir = arcademenudir + "\\gameslist\\games.txt"
