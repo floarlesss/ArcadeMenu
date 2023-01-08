@@ -3,7 +3,12 @@ import os
 working_dir = os.getcwd()
 
 def getNumberOfGames():
-    print(working_dir)
+    arcademenudir = working_dir[8:]
+    gameslistdir = arcademenudir + "/gameslist/games.txt"
+
+    with open(gameslistdir,"r") as f:
+        for line in f:
+            #do something here
 
 
 
