@@ -24,6 +24,7 @@ def getNumberOfGames():
                 # games.
                 if ln == 4:
                     number_of_games += 1
+                    newgame = False
                 # If the line is comment (starts with "#"), do nothing.
                 if line.startswith("#"):
                     pass
