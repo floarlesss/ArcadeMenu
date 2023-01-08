@@ -25,10 +25,9 @@ def startwithlogo(arg):
         window.attributes("-fullscreen", True)
         window.title("ArcadeMenu")
 
-
-        logo_image = tk.PhotoImage(file="icons_and_logo/logo/logo_full/logo_fullscreen.png")
-        logo_imageLabel = tk.Label(window, image=logo_image)
-        logo_imageLabel.pack()
+        img = tk.PhotoImage(file="icons_and_logo/logo/logo_full/logo_fullscreen.png")
+        panel = tk.Label(window, image = img)
+        panel.pack()
         
 
 
