@@ -16,10 +16,10 @@ else:
     position = 1
     while (arguments >= position):
         if (sys.argv[position]).startswith("--"):
-            argumentraw = (sys.argv[position])
-            argument = argumentraw[2:]
-
-        print((sys.argv[position]))
+            argument = (sys.argv[position])[2:]
+            print(argument)
+        else:
+            exit()
         position = position + 1
 
 window = tk.Tk()
