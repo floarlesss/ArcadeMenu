@@ -22,12 +22,12 @@ def startwithlogo(arg):
         window = tk.Tk()
         window.geometry('900x500')
         window.configure(bg='#1C1D1F', cursor="none")
-        window.attributes("-fullscreen", True)
+        #window.attributes("-fullscreen", True)
         window.title("ArcadeMenu")
 
         logo_img = tk.PhotoImage(file="icons_and_logo/logo/logo_full/logo_fullscreen.png")
         logo_imgLabel = tk.Label(window, image = logo_img)
-        logo_imgLabel.pack()
+        logo_imgLabel.pack(fill=BOTH, expand=True)
         
 
 
