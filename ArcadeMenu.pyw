@@ -8,7 +8,15 @@ from tkinter import *
 
 # Count the arguments
 arguments = len(sys.argv) - 1
-print("There are "+ str(arguments) +" arguments.")
+if arguments > 2:
+    print("Sorry, this program only accepts two arguments.")
+    exit()
+else:
+    # Output argument-wise
+    position = 1
+    while (arguments >= position):
+        print((position, sys.argv[position]))
+        position = position + 1
 
 window = tk.Tk()
 window.geometry('900x500')
