@@ -11,7 +11,7 @@ from tkinter import *
 # This is called when the program doesn't recognise a command or none are
 # passed into it.
 def printhelp():
-    print("\nArguments:\n")
+    print("\nArguments:")
     print('--startwithlogo\nYou can pass "true" or "false" into this. (case-insensitive)')
     exit()
 
@@ -81,6 +81,12 @@ else:
 
                 if argument.lower() == "true":
                     startwithlogo(True)
+
+            # If the argument doesn't start with "startwithlogo",
+            # Tell the user and call the "printhelp" function. 
+            if argument.startswith("startwithlogo") == False:
+                print("That argument is not recognised.")
+                printhelp()
         # If the argument doesn't start with "--", it prints a notice
         # to the user that it's not recognised, and calls the printhelp
         # function.
