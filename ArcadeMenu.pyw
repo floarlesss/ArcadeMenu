@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from PIL import ImageTK, Image
 from threading import Thread
 import sys
 
