@@ -17,7 +17,8 @@ else:
     while (arguments >= position):
         if (sys.argv[position]).startswith("--"):
             argument = (sys.argv[position])[2:]
-            print(argument)
+            if argument.startswith("startwithlogo"):
+                argument = argument[13:]
         else:
             exit()
         position = position + 1
