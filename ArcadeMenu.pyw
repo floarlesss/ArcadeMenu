@@ -16,7 +16,7 @@ else:
     position = 1
     while (arguments >= position):
         if (sys.argv[position]).startswith("--"):
-            argument = (sys.argv[position])[2:]
+            argument = (sys.argv[position][2:])
 
         print((sys.argv[position]))
         position = position + 1
