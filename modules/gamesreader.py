@@ -13,7 +13,6 @@ def getNumberOfGames():
 
     # Open the games list .txt file
     with open(gameslistdir,"r") as f:
-        print("hi")
         # Loop through all the lines in the file
         for line in f:
             global ln
@@ -63,6 +62,7 @@ def getNumberOfGames():
             else:
                 print("No games were detected.")
                 print("Maybe \"NEW GAME\" isn't added in the games.txt file?")
+                break
 
 
 
@@ -72,6 +72,7 @@ print("1) Count number of games\n")
 print("Enter 1")
 
 command = int(input(""))
+print()
 
 if command != 1:
     print("Sorry, that's not a command.")
