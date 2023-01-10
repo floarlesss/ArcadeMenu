@@ -6,6 +6,7 @@ def getNumberOfGames():
     # declare number of games function variables:
     number_of_games = 0
     newgame = False
+    gamesdetected = False
 
 
     arcademenudir = working_dir[:-8]
@@ -25,22 +26,25 @@ def getNumberOfGames():
             # Counting over function, this is called when the string
             # "END OF LIST"
             def countingover(finished_number_of_games):
+                global gamesdetected
+                if gamesdetected == False:
+                    print("No games were detected.")
+                    print("Maybe \"NEW GAME:\" isn't added in the games.txt file?")
+                    return "NoGamesDetected"
+
+
                 global newgame, number_of_games
                 print("Counting over.")
                 print("Number of games:\n"+ str(finished_number_of_games) +"")
 
                 newgame = False
                 number_of_games = 0
+                gamesdetected = False
                 return number_of_games
 
 
             if line == "END OF LIST":
-                if number_of_games == 0:
-                    print("No games were detected.")
-                    print("Maybe \"NEW GAME:\" isn't added in the games.txt file?")
-                    return "NoGamesDetected"
-                else:
-                    countingover(number_of_games)
+                countingover(number_of_games)
 
             # If the line starts with "#", pass (because it's a comment)
             if line.startswith("#"):
