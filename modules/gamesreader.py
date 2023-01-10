@@ -21,10 +21,6 @@ def getNumberOfGames():
             if line == "NEW GAME:":
                 newgame = True
                 ln = 0
-            else:
-                print("No games were detected.")
-                print("Maybe \"NEW GAME:\" isn't added in the games.txt file?")
-                return "NoGamesDetected"
 
             # Counting over function, this is called when the string
             # "END OF LIST"
@@ -39,7 +35,12 @@ def getNumberOfGames():
 
 
             if line == "END OF LIST":
-                countingover(number_of_games)
+                if number_of_games == 0:
+                    print("No games were detected.")
+                    print("Maybe \"NEW GAME:\" isn't added in the games.txt file?")
+                    return "NoGamesDetected"
+                else:
+                    countingover(number_of_games)
 
             # If the line starts with "#", pass (because it's a comment)
             if line.startswith("#"):
