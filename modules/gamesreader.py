@@ -3,6 +3,7 @@ import os
 working_dir = os.getcwd()
 
 def getNumberOfGames():
+    global gamesdetected
     # declare number of games function variables:
     number_of_games = 0
     newgame = False
