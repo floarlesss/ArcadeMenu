@@ -23,6 +23,10 @@ def getNumberOfGames():
             def countingover(number_of_games):
                 print("Counting over.")
                 print("Number of games:\n"+ str(number_of_games) +"")
+
+                newgame = False
+                number_of_games = 0
+
                 return number_of_games
 
 
