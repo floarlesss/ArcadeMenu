@@ -15,8 +15,10 @@
 # A game about a bird where the user taps the screen to make the bird go higher.\nThere are obstacles that the player needs to avoid using the flap mechanic.
 # /home/(username)/gamepics/flappy_bird.png
 
-
-
+NEW GAME:
+Test game
+This is a test game.\nnew line.
+/path/to/icon.png
 
 
 
