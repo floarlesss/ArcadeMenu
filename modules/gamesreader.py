@@ -26,6 +26,7 @@ def getNumberOfGames():
             # Counting over function, this is called when the string
             # "END OF LIST"
             def countingover(finished_number_of_games):
+                print("this function was run")
                 global gamesdetected
                 if gamesdetected == False:
                     print("No games were detected.")
