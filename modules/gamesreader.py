@@ -13,6 +13,7 @@ def getNumberOfGames():
 
     # Open the games list .txt file
     with open(gameslistdir,"r") as f:
+        print("hi")
         # Loop through all the lines in the file
         for line in f:
             global ln
