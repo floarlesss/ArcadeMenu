@@ -62,7 +62,7 @@ def getNumberOfGames():
             else:
                 print("No games were detected.")
                 print("Maybe \"NEW GAME\" isn't added in the games.txt file?")
-                break
+                return "NoGamesDetected"
 
 
 
