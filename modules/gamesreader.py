@@ -60,6 +60,9 @@ def getNumberOfGames():
             if line.startswith("NEW GAME:"):
                 newgame = True
                 ln = 0
+            else:
+                print("No games were detected.")
+                print("Maybe \"NEW GAME\" isn't added in the games.txt file?")
 
 
 
