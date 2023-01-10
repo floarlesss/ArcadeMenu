@@ -18,12 +18,12 @@ def getNumberOfGames():
             global ln
 
              # If the line starts with "NEW GAME:"
-            if line.startswith("NEW GAME:"):
+            if line == "NEW GAME:":
                 newgame = True
                 ln = 0
             else:
                 print("No games were detected.")
-                print("Maybe \"NEW GAME\" isn't added in the games.txt file?")
+                print("Maybe \"NEW GAME:\" isn't added in the games.txt file?")
                 return "NoGamesDetected"
 
             # Counting over function, this is called when the string
