@@ -13,3 +13,4 @@
 
 ## Current development status:
 ###### Still in an early stage of development. Roughly 20% done.
+###### (gamesreader.py found in modules/gamesreader.py is currently being developed.)
