@@ -16,7 +16,19 @@ def getNumberOfGames():
     with open(gameslistdir,"r") as f:
         # Loop through all the lines in the file
         for line in f:
-            global newgame, ln
+            global newgame, ln, number_of_games
+
+            # Counting over function, this is called when the string
+            # "END OF LIST"
+            def countingover(number_of_games):
+                print("Counting over.")
+                print("Number of games:\n"+ str(number_of_games) +"")
+                return number_of_games
+
+
+            if line == "END OF LIST":
+                countingover(number_of_games)
+
             # If the line starts with "#", pass (because it's a comment)
             if line.startswith("#"):
                 pass
@@ -46,9 +58,16 @@ def getNumberOfGames():
 
 
 
+print("Hey! It seems you've run this file from the terminal.")
+print("You can use this file from the terminal if you plan to debug it.\n")
+print("1) Count number of games\n")
+print("Enter 1")
 
-getNumberOfGames()
+command = int(input(""))
 
-print("No Command Specified")
-print("Or, if you want to know the commands, then sure! here:\n")
-print("There are currently no commands xD")
+if command != 1:
+    print("Sorry, that's not a command.")
+
+
+if command == 1:
+    getNumberOfGames()
