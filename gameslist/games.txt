@@ -6,6 +6,7 @@
 # the full path to the game's icon (png format)
 #
 # If there a no games in this list, then a label will popup saying "No games in game list."
+# At the end of the list, there is "END OF LIST". Please don't remove this as this is what marks the end of the list to the program.
 #
 # Example:
 #
@@ -26,6 +27,6 @@
 
 
 
-
+END OF LIST
 
 # If you would like to see how this list is read, please refer to line(i will fill this in later) in(fill this in later too)
