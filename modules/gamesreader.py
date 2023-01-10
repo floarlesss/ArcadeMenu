@@ -2,12 +2,11 @@ import os
 
 working_dir = os.getcwd()
 
-# get number of games function variables:
-number_of_games = 0
-newgame = False
-
 def getNumberOfGames():
-    global number_of_games, newgame
+    # declare number of games function variables:
+    number_of_games = 0
+    newgame = False
+
 
     arcademenudir = working_dir[:-8]
     gameslistdir = arcademenudir + "\\gameslist\\games.txt"
@@ -16,13 +15,14 @@ def getNumberOfGames():
     with open(gameslistdir,"r") as f:
         # Loop through all the lines in the file
         for line in f:
-            global newgame, ln, number_of_games
+            global ln
 
             # Counting over function, this is called when the string
             # "END OF LIST"
-            def countingover(number_of_games):
+            def countingover(finished_number_of_games):
+                global newgame, number_of_games
                 print("Counting over.")
-                print("Number of games:\n"+ str(number_of_games) +"")
+                print("Number of games:\n"+ str(finished_number_of_games) +"")
 
                 newgame = False
                 number_of_games = 0
