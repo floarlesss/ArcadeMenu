@@ -38,7 +38,7 @@ def getGames():
     lines = raw.split("\n")
     description = ""
     for x in range(4, len(lines)):
-      description += "\n" + lines[x]
+      description += lines[x]
     games.append(Game(lines[0], lines[1].split(","), lines[2], lines[3], description))
 
   return games
