@@ -34,7 +34,6 @@ def getGames():
   for file in list:
     with open("./gameslist/" + file, "r") as f:
       raw = f.read()
-      f.close()
 
     lines = raw.split("\n")
     description = ""
