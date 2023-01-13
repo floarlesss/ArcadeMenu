@@ -15,8 +15,9 @@
 ###### Still in an early stage of development. Roughly 35% done.
 ###### (readFile.py is currently being tested.)
 
+<br>
 
-# Credits***
+# Credits
 
 ### ArcadeMenu's developers
 * #### floarlesss
