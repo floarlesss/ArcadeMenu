@@ -1,4 +1,4 @@
-# ArcadeMenu
+> # ArcadeMenu
 
 ## A menu for the arcade cabinet! (WIP)
 
