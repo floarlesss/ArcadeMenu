@@ -16,7 +16,7 @@
 ###### (readFile.py is currently being tested.)
 
 
-### Credits
+# Credits
 ## ArcadeMenu's developers
-# floarlesss and Bumpkin-PI
+### floarlesss and Bumpkin-PI
 https://github.com/Bumpkin-Pi
