@@ -1,5 +1,14 @@
-import os
+# .game file structure
 
+# gamename
+# list of icon file adresses, seperated by comma
+# executable path
+# Auther [NAME - DATE]
+# Description for all remaining lines...
+# ...
+
+
+import os
 
 class Game:
   name = ""
@@ -31,7 +40,7 @@ def getGames():
     description = ""
     for x in range(4, len(lines)):
       description += "\n" + lines[x]
-    games.append(Game(lines[0], lines[1], lines[2], lines[4], description))
+    games.append(Game(lines[0], lines[1].split(","), lines[2], lines[4], description))
 
   return games
 
