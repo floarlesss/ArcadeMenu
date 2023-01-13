@@ -12,5 +12,11 @@
 
 
 ## Current development status:
-###### Still in an early stage of development. Roughly 20% done.
-###### (gamesreader.py found in modules/gamesreader.py is currently being developed.)
+###### Still in an early stage of development. Roughly 35% done.
+###### (readFile.py is currently being tested.)
+
+
+### Credits
+## ArcadeMenu's developers
+# floarlesss and Bumpkin-PI
+https://github.com/Bumpkin-Pi
