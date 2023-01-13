@@ -6,6 +6,7 @@
 # the full path to the game's icon (png format)
 #
 # If there a no games in this list, then a label will popup saying "No games in game list."
+# At the end of the list, there is "END OF LIST". Please don't remove this as this is what marks the end of the list to the program.
 #
 # Example:
 #
@@ -14,6 +15,10 @@
 # A game about a bird where the user taps the screen to make the bird go higher.\nThere are obstacles that the player needs to avoid using the flap mechanic.
 # /home/(username)/gamepics/flappy_bird.png
 
+NEW GAME:
+Test game
+This is a test game.\nnew line.
+/path/to/icon.png
 
 
 
@@ -24,8 +29,6 @@
 
 
 
-
-
-
+END OF LIST
 
 # If you would like to see how this list is read, please refer to line(i will fill this in later) in(fill this in later too)

@@ -1,0 +1,18 @@
+Welcome the the ArcadeMenu Documentation!
+This will go into a lot of detail about all of the programs and files of this project.
+
+If you have any questions that are not answered in this documentation, please don't hesitate
+to email me at: arcademenuhelp@rolexrakes.com
+
+MODULES:
+    This part of the modules documentation is about "gamesreader.pyw". Located in ArcadeMenu/modules/gamesreader.pyw.
+    
+        gamesreader is a module to read the gamelist located in ArcadeMenu/gamelist/games.txt
+        
+        On the first line, the os module is imported to get the full parent directory on line 4.
+
+        On the third line, there is a function named "getNumberOfGames".
+        This is used by ArcadeMenu to loop a certain number of times. (because ArcadeMenu reads the
+        file from top to bottom, and will stop reading it at an empty line).
+
+    
