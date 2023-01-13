@@ -17,6 +17,6 @@
 
 
 # Credits
-## ArcadeMenu's developers
+#### ArcadeMenu's developers
 ### floarlesss and Bumpkin-PI
 https://github.com/Bumpkin-Pi
