@@ -1,0 +1,25 @@
+player 1
+right	 d
+left	 a
+up	     w
+down	 s
+1	e    Yellow
+2	r	 White
+3	f	 Black
+4	v	 Green
+5	c	 Red
+6	x	 Blue
+
+player 2
+right	 l
+left	 j
+up	     i
+down	 k
+1	u
+2	y
+3	h
+4	b
+5	n
+6	m
+
+Home button t
