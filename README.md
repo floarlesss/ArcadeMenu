@@ -13,7 +13,7 @@
 
 ## Current development status:
 ###### Still in an early stage of development. Roughly 35% done.
-###### Development is currently paused.
+###### Development is currently focused on ArcadeMenu.pyw.
 ###### (ArcadeMenu.pyw is currently in development)
 
 <br>
