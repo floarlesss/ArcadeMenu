@@ -30,4 +30,4 @@
 <br>
 
 ###### Please note that the first release will not be the last release.
-###### ArcadeMenu will recieve a major update after it's first release aiming to be released in September 2023.
+###### ArcadeMenu will recieve a major update after it's first release aiming to be published in September 2023.
