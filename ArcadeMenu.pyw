@@ -3,7 +3,6 @@ import readFile
 from threading import Thread
 import sys
 from configparser import ConfigParser
-import PIL
 from PIL import Image as PILimage
 
 import tkinter as tk
@@ -16,11 +15,17 @@ configFilePath = "admin/settings.ini"
 config = ConfigParser()
 config.read(configFilePath)
 
-
 autodetectSetting = config["autoDetectIcons"]["autodetection"]
 
 ableJoysticks = config["gameSelectors"]["ableJoysticks"]
 joystickAbleToSelect = config["gameSelectors"]["joystickAbleToSelect"]
+
+# The "exit_program" function is a function that is called when
+# "x" is pressed. This feature is added because it is very hard
+# to try and exit ArcadeMenu in fullscreen mode.
+def exit_program(window):
+    window.destroy()
+    exit(0)
 
 
 # The "printhelp" function is just a simple function that prints the
@@ -41,8 +46,14 @@ def printhelp():
     print("Please note that the fullscreen argument is not mandatory.")
     exit()
 
+def load():
+    print("\nLoading...\n")
+    # This is where you can load images, gifs, videos or anything that takes time
+    # to load.
+    print("\nLoading finished.\n")
 
-def startwithlogo(yesno, fullscreen=True):
+
+def program(yesno, fullscreen=True):
     # globalise some variables so they can be used later in functions
     global window
 
@@ -138,95 +149,121 @@ def startwithlogo(yesno, fullscreen=True):
             
 
 
-        def main():
+        def mainprogram():
+            print("main run")
             listOfGames = gameinfohandler()
             #creategameoptions(listOfGames)
 
-        main()
+        mainprogram()
 
 
-
-
-    if yesno == True:
-        # Window config:
-        window = tk.Tk()
-        # if fullscreen equals to false, start the window in resolutions:
-        # 1366x768
-        # goofy resolution am i right? that's the arcade screen's resolution.
-        if fullscreen == False:
-            window.geometry('1366x768')
-        # if fullscreen is true (which is the default)
-        # start in fullscreen
-        if fullscreen == True:
-            screenWidth = window.winfo_screenwidth()
-            screenHeight = window.winfo_screenheight()
-
-            window.overrideredirect(True)
-            window.geometry('+0+0')
-            window.geometry('900x500')
-
-            window.geometry(""+ str(screenWidth) +"x"+ str(screenHeight) +"")
-
-        window.configure(bg='#292929', cursor="none")
-        window.resizable(False, False)
-        window.title("ArcadeMenu")
-
-        try:
-            with open("icons_and_logo/logo/logo_full/logo_custom.png", "r"):
-                pass
-        except FileNotFoundError:
-            image = PILimage.open('icons_and_logo/logo/logo_full/logo_fullscreen.png')
-            image.thumbnail((screenWidth, screenHeight), PILimage.ANTIALIAS)
-            image.save('icons_and_logo/logo/logo_full/logo_custom.png', 'PNG', quality=300)
-        except Exception as e:
-            messagebox.showerror("Error loading file", str(e))
-
-        # load the logo image to pack (place) onto screen later
-        logoFullscreen_img = tk.PhotoImage(file="icons_and_logo/logo/logo_full/logo_fullscreen.png")
-        logo_panel = tk.Label(window, image = logoFullscreen_img)
-        logo_panel.pack(fill=BOTH, expand=True)
-        # ^ this is where it packs the logo panel to the screen. above it is configuring
-        # it before the widget is packed.
-
-        def destroyImageAndCallMain():
-            logo_panel.destroy()
-            main()
-
-        window.after(1500, destroyImageAndCallMain)
-
-
-        window.mainloop()
     
+    def startwindow():
+        def start():
+            global window
 
-    if yesno == False:
-        # Window config:
-        window = tk.Tk()
-        # if fullscreen equals to false, start the window in resolutions:
-        # 1366x768
-        # goofy resolution am i right? that's the arcade screen's resolution.
-        if fullscreen == False:
-            window.geometry('1366x768')
-            window.attributes("-fullscreen", False)
-        # if fullscreen is true (which is the default)
-        # start in fullscreen
-        if fullscreen == True:
-            screenWidth = window.winfo_screenwidth()
-            screenHeight = window.winfo_screenheight()
+            def resizeImg():
+                try:
+                    with open("icons_and_logo/logo/logo_full/logo_custom.png"):
+                        pass
+                except FileNotFoundError:
+                    screenWidth = window.winfo_screenwidth()
+                    screenHeight = window.winfo_screenheight()
 
-            window.overrideredirect(True)
-            window.geometry('+0+0')
-            window.geometry('900x500')
+                    image = PILimage.open('icons_and_logo/logo/logo_full/logo_fullscreen.png')
+                    return 2
 
-            window.geometry(""+ str(screenWidth) +"x"+ str(screenHeight) +"")
+                except Exception as e:
+                    messagebox.showerror("Error loading file", str(e))
+                    return 0
+                else:
+                    screenWidth = window.winfo_screenwidth()
+                    screenHeight = window.winfo_screenheight()
 
-        window.configure(bg='#1C1D1F', cursor="none")
-        window.title("ArcadeMenu")
+                    custom_image = PILimage.open('icons_and_logo/logo/logo_full/logo_custom.png')
+                    if custom_image.width != screenWidth and custom_image.height != screenHeight:
+                        resized_image = image.resize((screenWidth, screenHeight))
+                        resized_image.save('icons_and_logo/logo/logo_full/logo_custom.png', 'PNG', quality=300)
+                        return 3
+                    else:
+                        return 1
 
-        main()
+            if yesno == True:
+                # Window config:
+                window = tk.Tk()
+                # if fullscreen equals to false, start the window in resolutions:
+                # 1366x768
+                # goofy resolution am i right? that's the arcade screen's resolution.
+                if fullscreen == False:
+                    window.geometry('1366x768')
+                    window.resizable(False, False)
+                    bindExitButton(window)
+                # if fullscreen is true (which is the default)
+                # start in fullscreen
+                if fullscreen == True:
+                    window.attributes("-fullscreen", True)
+                    bindExitButton(window)
 
-        window.mainloop()
+                window.configure(bg='#292929', cursor="none")
+                window.title("ArcadeMenu")
+
+                # Resizing the logo image so it fits on any screen.
+                resizeResult = resizeImg()
+                if resizeResult == 1 or resizeResult == 2 or resizeResult == 3:
+                    def destroyImageAndCallMain():
+                        logo_panel.destroy()
+                        main()
+                    window.after(1500, destroyImageAndCallMain)
+                if resizeResult == 0:
+                    window.destroy()
+                    exit()
+
+                # load the logo image to pack (place) onto screen later
+                if fullscreen == True:
+                    logoFullscreen_img = tk.PhotoImage(file="icons_and_logo/logo/logo_full/logo_custom.png")
+                if fullscreen == False:
+                    logoFullscreen_img = tk.PhotoImage(file="icons_and_logo/logo/logo_full/logo_fullscreen.png")
+
+                logo_panel = tk.Label(window, image = logoFullscreen_img)
+                logo_panel.pack(fill=BOTH, expand=True)
+                # ^ this is where it packs the logo panel to the screen. above it is configuring
+                # it before the widget is packed.
 
 
+                window.mainloop()
+            
+
+            if yesno == False:
+                # Window config:
+                window = tk.Tk()
+                # if fullscreen equals to false, start the window in resolutions:
+                # 1366x768
+                # goofy resolution am i right? that's the arcade screen's resolution.
+                if fullscreen == False:
+                    window.geometry('1366x768')
+                    window.resizable(False, False)
+                    bindExitButton(window)
+                # if fullscreen is true (which is the default)
+                # start in fullscreen
+                if fullscreen == True:
+                    window.attributes("-fullscreen", True)
+                    bindExitButton(window)
+
+                window.configure(bg='#1C1D1F', cursor="none")
+                window.title("ArcadeMenu")
+
+                main()
+                window.mainloop()
+
+        def bindExitButton(window):
+            # Bind the button X to the exit_program function
+            window.bind("<BackSpace>", lambda e: exit_program(window))
+
+        startThread = Thread(target=start)
+        startThread.start()
+
+    
+    startwindow()
 
 
 
@@ -310,18 +347,22 @@ def handleargs():
     # This is the final bit of code, starts everything... kinda like a "launch!" system
     if arguments == 2:
         if swlArg == True and fullscreenArg == True:
-            startwithlogo(True)
+            program(True)
         if swlArg == False and fullscreenArg == True:
-            startwithlogo(False)
+            program(False)
 
         if swlArg == True and fullscreenArg == False:
-            startwithlogo(True, False)
+            program(True, False)
         if swlArg == False and fullscreenArg == False:
-            startwithlogo(False, False)
+            program(False, False)
     if arguments == 1:
         if swlArg == True:
-            startwithlogo(True)
+            program(True)
         if swlArg == False:
-            startwithlogo(False)
+            program(False)
+
 
 handleargs()
+
+loadThread = Thread(target=load)
+loadThread.start()
