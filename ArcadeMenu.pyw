@@ -11,6 +11,15 @@ from tkinter import *
 
 print("LOGS:\n")
 
+
+# Loading function, this function is ran immediately when the program is started so it can load things like images.
+def load():
+    print("\nLoading...\n")
+    # This is where you can load images, gifs, videos or anything that takes time
+    # to load.
+    print("\nLoading finished.\n")
+
+
 print("CONFIG CODE:")
 print(" Reading config file...")
 
@@ -67,15 +76,6 @@ def printhelp():
     print("python ArcadeMenu.pyw --startwithlogo=true --fullscreen=false")
     print("Please note that the fullscreen argument is not mandatory.")
     exit()
-
-
-
-# Loading function, this function is ran immediately when the program is started so it can load things like images.
-def load():
-    print("\nLoading...\n")
-    # This is where you can load images, gifs, videos or anything that takes time
-    # to load.
-    print("\nLoading finished.\n")
 
 
 def program(yesno, fullscreen=True):
@@ -166,15 +166,49 @@ def program(yesno, fullscreen=True):
 
             
 
-        def mainprogram():
+        def graphical_elements():
             print("\nMAIN STARTED\n")
+
+            
+
+
+
+            def config_widgets():
+                global split_frame
+                split_frame = tk.Frame(window, bg='#595959', height=50, width=25)
+
+                def left_side():
+                    global left_frame
+                    # This is the left side of the GUI (split by the "split_frame" frame).
+                    left_frame = tk.Frame(window, bg='#1C1D1F', height=50, width=25)
+
+                # This is the part of the program where the widgets are given variables and configurations.
+
+
+
             def pack():
                 # This is the part of the program where all of the widgets are packed onto the screen.
-                pass
+                def framePack():
+                    split_frame.pack(fill='y', expand=True)
+                    split_frame.pack_propagate(0)
+
+                    left_frame.pack(fill=BOTH, expand=True)
+                    left_frame.pack_propagate(0)
+
+
+
+
+                config_widgets()
+                framePack()
+
+
+            config_widgets()  
+            pack()
+
             listOfGames = gameinfohandler()
             #creategameoptions(listOfGames)
 
-        mainprogram()
+        graphical_elements()
 
 
     
@@ -279,7 +313,7 @@ def program(yesno, fullscreen=True):
                     window.attributes("-fullscreen", True)
                     bindExitButton(window)
 
-                window.configure(bg='#1C1D1F', cursor="none")
+                window.configure(bg='#292929', cursor="none")
                 window.title("ArcadeMenu")
 
                 main()
