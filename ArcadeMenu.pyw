@@ -171,6 +171,9 @@ def program(yesno, fullscreen=True):
                     screenHeight = window.winfo_screenheight()
 
                     image = PILimage.open('icons_and_logo/logo/logo_full/logo_fullscreen.png')
+                    
+                    resized_image = image.resize((screenWidth, screenHeight))
+                    resized_image.save('icons_and_logo/logo/logo_full/logo_custom.png', 'PNG', quality=300)
                     return 2
 
                 except Exception as e:
