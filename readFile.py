@@ -29,11 +29,11 @@ class Game:
 
 
 def getGames():
-  list = os.listdir("./gameslist/games/")
+  list = os.listdir(".PROGRAM_FILES/gameslist/games/")
   list.remove("icons")
   games = []
   for file in list:
-    with open("./gameslist/games/" + file, "r") as f:
+    with open(".PROGRAM_FILES/gameslist/games/" + file, "r") as f:
       raw = f.read()
 
     lines = raw.split("\n")

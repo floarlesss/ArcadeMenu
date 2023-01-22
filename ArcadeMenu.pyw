@@ -9,16 +9,38 @@ import tkinter as tk
 from tkinter import messagebox
 from tkinter import *
 
-# Read the configurations file
-configFilePath = "admin/settings.ini"
+print("LOGS:\n")
 
-config = ConfigParser()
-config.read(configFilePath)
+print("CONFIG CODE:")
+print(" Reading config file...")
 
-autodetectSetting = config["autoDetectIcons"]["autodetection"]
+try:
+    # Read the configurations file
+    print("Setting the config file path variable")
+    configFilePath = ".PROGRAM_FILES/admin/settings.ini"
 
-ableJoysticks = config["gameSelectors"]["ableJoysticks"]
-joystickAbleToSelect = config["gameSelectors"]["joystickAbleToSelect"]
+    print("Initializing config parser")
+    config = ConfigParser()
+    print("Reading config file")
+    config.read(configFilePath)
+
+    print("Setting autodetect setting variable...\n")
+    autodetectSetting = config["autoDetectIcons"]["autodetection"]
+
+    ableJoysticks = config["gameSelectors"]["ableJoysticks"]
+    joystickAbleToSelect = config["gameSelectors"]["joystickAbleToSelect"]
+except Exception as e:
+    print("There was an error during the configuration part of the program. Error info:\n"+ str(e) +"")
+    try:
+        window.destroy()
+    except:
+        pass
+    messagebox.showerror("Error during config setup",
+    "An error occured whilst trying to setup the configuration values. Error info:\n"+ str(e) +"")
+    exit()
+else:
+    print("CONFIG CODE FINISHED")
+
 
 # The "exit_program" function is a function that is called when
 # "x" is pressed. This feature is added because it is very hard
@@ -46,6 +68,9 @@ def printhelp():
     print("Please note that the fullscreen argument is not mandatory.")
     exit()
 
+
+
+# Loading function, this function is ran immediately when the program is started so it can load things like images.
 def load():
     print("\nLoading...\n")
     # This is where you can load images, gifs, videos or anything that takes time
@@ -87,8 +112,6 @@ def program(yesno, fullscreen=True):
             # This is an example for me to use and add on later in
             # developing ArcadeMenu.
             #game_frame_nameLabel[2]["text"] = "hi dis is test text lel"
-
-
             global currentgame, maxgamenum
             print(str(currentgame))
 
@@ -99,21 +122,17 @@ def program(yesno, fullscreen=True):
                     print()
                     #game_frame[i]['bg'] = '#2E2E2E'
 
-
-
             if direction == "up":
                     print("up")
                     currentgame -= 1
                     #game_frame[currentgame]['bg'] = '#525252'
-
             if direction == "down":
                     print("down")
                     currentgame += 1
                     #game_frame[currentgame]['bg'] = '#525252'
-                    
-
 
             gameselectorhandler()
+
             # Selector keybinds
             if ableJoysticks == "both":
                 # If ableJoysticks (set in the settings.ini file)
@@ -139,7 +158,6 @@ def program(yesno, fullscreen=True):
                     window.bind("w", lambda e: gameselectorhandler("up"))
                     window.bind("s", lambda e: gameselectorhandler("down"))
 
-
                 if joystickAbleToSelect == "right":
                     # Player 2 binds
                     window.bind("i", lambda e: gameselectorhandler("up"))
@@ -148,9 +166,11 @@ def program(yesno, fullscreen=True):
 
             
 
-
         def mainprogram():
-            print("main run")
+            print("\nMAIN STARTED\n")
+            def pack():
+                # This is the part of the program where all of the widgets are packed onto the screen.
+                pass
             listOfGames = gameinfohandler()
             #creategameoptions(listOfGames)
 
@@ -162,18 +182,21 @@ def program(yesno, fullscreen=True):
         def start():
             global window
 
-            def resizeImg():
+            def resizeImg(mode):
                 try:
-                    with open("icons_and_logo/logo/logo_full/logo_custom.png"):
+                    with open(".PROGRAM_FILES/icons_and_logo/logo/logo_full/logo_custom.png"):
                         pass
                 except FileNotFoundError:
                     screenWidth = window.winfo_screenwidth()
                     screenHeight = window.winfo_screenheight()
 
-                    image = PILimage.open('icons_and_logo/logo/logo_full/logo_fullscreen.png')
-                    
+                    if mode == "windowed":
+                        image = PILimage.open('.PROGRAM_FILES/icons_and_logo/logo/logo_full/logo_fullscreen.png')
+                    if mode == "fullscreen":
+                        image = PILimage.open('.PROGRAM_FILES/icons_and_logo/logo/logo_full/logo_large.png')
+
                     resized_image = image.resize((screenWidth, screenHeight))
-                    resized_image.save('icons_and_logo/logo/logo_full/logo_custom.png', 'PNG', quality=300)
+                    resized_image.save('.PROGRAM_FILES/icons_and_logo/logo/logo_full/logo_custom.png', 'PNG', quality=300)
                     return 2
 
                 except Exception as e:
@@ -183,10 +206,10 @@ def program(yesno, fullscreen=True):
                     screenWidth = window.winfo_screenwidth()
                     screenHeight = window.winfo_screenheight()
 
-                    custom_image = PILimage.open('icons_and_logo/logo/logo_full/logo_custom.png')
+                    custom_image = PILimage.open('.PROGRAM_FILES/icons_and_logo/logo/logo_full/logo_custom.png')
                     if custom_image.width != screenWidth and custom_image.height != screenHeight:
                         resized_image = image.resize((screenWidth, screenHeight))
-                        resized_image.save('icons_and_logo/logo/logo_full/logo_custom.png', 'PNG', quality=300)
+                        resized_image.save('.PROGRAM_FILES/icons_and_logo/logo/logo_full/logo_custom.png', 'PNG', quality=300)
                         return 3
                     else:
                         return 1
@@ -211,7 +234,11 @@ def program(yesno, fullscreen=True):
                 window.title("ArcadeMenu")
 
                 # Resizing the logo image so it fits on any screen.
-                resizeResult = resizeImg()
+                if fullscreen == True:
+                    resizeResult = resizeImg("fullscreen")
+                if fullscreen == False:
+                    resizeResult = resizeImg("windowed")
+
                 if resizeResult == 1 or resizeResult == 2 or resizeResult == 3:
                     def destroyImageAndCallMain():
                         logo_panel.destroy()
@@ -223,9 +250,9 @@ def program(yesno, fullscreen=True):
 
                 # load the logo image to pack (place) onto screen later
                 if fullscreen == True:
-                    logoFullscreen_img = tk.PhotoImage(file="icons_and_logo/logo/logo_full/logo_custom.png")
+                    logoFullscreen_img = tk.PhotoImage(file=".PROGRAM_FILES/icons_and_logo/logo/logo_full/logo_custom.png")
                 if fullscreen == False:
-                    logoFullscreen_img = tk.PhotoImage(file="icons_and_logo/logo/logo_full/logo_fullscreen.png")
+                    logoFullscreen_img = tk.PhotoImage(file=".PROGRAM_FILES/icons_and_logo/logo/logo_full/logo_fullscreen.png")
 
                 logo_panel = tk.Label(window, image = logoFullscreen_img)
                 logo_panel.pack(fill=BOTH, expand=True)

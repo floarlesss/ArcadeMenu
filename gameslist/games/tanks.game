@@ -1,7 +1,0 @@
-TanksAlot
-./icons_and_logos/tanks.png
-echo "Launching TanksAlot"; ./games/TanksAlot/tanks; python ArcadeMenu.pyw --startwithlogo=False
-Holly PB - Y12 - 2023
-A Wii tanks like oneshot tank game.
-Drive your tank around and try to hit your opponent before they hit you.
-Writen in C++ with the sfml graphics Library.
