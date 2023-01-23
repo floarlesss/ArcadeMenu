@@ -174,26 +174,36 @@ def program(yesno, fullscreen=True):
 
 
             def config_widgets():
-                global split_frame
+                global screenWidth, split_frame
+                screenWidth = window.winfo_screenwidth()
+
                 split_frame = tk.Frame(window, bg='#595959', height=50, width=25)
 
                 def left_side():
                     global left_frame
                     # This is the left side of the GUI (split by the "split_frame" frame).
-                    left_frame = tk.Frame(window, bg='#1C1D1F', height=50, width=25)
+                    left_frame = tk.Frame(window, bg='#1C1D1F', height=50, width=screenWidth / 2 - 25)
+                def right_side():
+                    global right_frame
+                    # THis is the right side of the GUI (split by the "split_frame" frame).
+                    right_frame = tk.Frame(window, bg='#1C1D1F', height=50, width=screenWidth / 2)
 
                 # This is the part of the program where the widgets are given variables and configurations.
 
+                left_side()
+                right_side()
 
 
             def pack():
                 # This is the part of the program where all of the widgets are packed onto the screen.
                 def framePack():
-                    split_frame.pack(fill='y', expand=True)
-                    split_frame.pack_propagate(0)
+                    window.rowconfigure(0, weight=1)
 
-                    left_frame.pack(fill=BOTH, expand=True)
-                    left_frame.pack_propagate(0)
+                    left_frame.grid(row=0, column=1, sticky="nsew")
+                    split_frame.grid(row=0, column=2, sticky="nsew")
+                    right_frame.grid(row=0, column=3, sticky="nsew")
+
+                    
 
 
 
@@ -406,7 +416,6 @@ def handleargs():
                 print("That argument is not recognised.")
                 printhelp()
             position = position + 1
-
 
     # This is the final bit of code, starts everything... kinda like a "launch!" system
     if arguments == 2:
