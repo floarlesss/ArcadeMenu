@@ -1,4 +1,4 @@
-## This project is paused for the time being.
+### This project is paused for the time being.
 <br>
 
 # ArcadeMenu
