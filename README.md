@@ -1,7 +1,7 @@
 # ArcadeMenu
 
 ## A menu for the arcade cabinet! (WIP)
-## This project is paused for the time being.
+### This project is paused for the time being.
 
 ### Games launcher for a 2 player arcade cabinet.
 
