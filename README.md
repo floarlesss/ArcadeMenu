@@ -1,6 +1,7 @@
 # ArcadeMenu
 
 ## A menu for the arcade cabinet! (WIP)
+## This project is paused for the time being.
 
 ### Games launcher for a 2 player arcade cabinet.
 
@@ -12,7 +13,7 @@
 
 
 ## Current development status:
-###### Still in an early stage of development. Roughly 50% done.
+###### Still in an early stage of development. Roughly 10% done.
 ###### Development is currently in progress.
 ###### (ArcadeMenu.pyw is currently in development)
 
@@ -29,5 +30,4 @@
 <br>
 <br>
 
-###### Please note that the first release will not be the last release.
-###### ArcadeMenu will recieve a major update after it's first release aiming to be published in September 2023.
+###### Please note that the first release will not be the last.
