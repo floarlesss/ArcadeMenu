@@ -1,5 +1,6 @@
+## This project is paused for the time being.
+
 # ArcadeMenu
-###### This project is paused for the time being.
 
 ## A menu for the arcade cabinet! (WIP)
 
